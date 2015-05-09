@@ -13,23 +13,26 @@
 
 using namespace std;
 
+typedef unsigned int uint;
+
 const int MAX_TRIES = 200;
+const int MAX_DIGITS = 11;
 
 struct Range {
-    short start;
-    short end;
+    uint start;
+    uint end;
 
-    Range(const char *arg, short len) {
+    Range(const char *arg, uint len) {
         bool has_hyphen = false;
-        char lhs[6] = {0};
-        char rhs[6] = {0};
+        char lhs[MAX_DIGITS] = {0};
+        char rhs[MAX_DIGITS] = {0};
         char *ptr = lhs;
-        if (len > 6) len = 6;
-        for (int i = 0; i < len; ++i) {
+        if (len > MAX_DIGITS) len = MAX_DIGITS;
+        for (uint i = 0; i < len; ++i) {
             if (arg[i] == '-') {
                 has_hyphen = true;
                 ptr = rhs;
-                len = i + 6;  // prevent overflow
+                len = i + MAX_DIGITS;  // prevent overflow
             } else if (isdigit(arg[i])) {
                 *ptr = arg[i];
                 ++ptr;
@@ -77,8 +80,12 @@ int main(int argc, char *argv[]) {
         for (int i = 1; i < argc; ++i) {
             Range range(argv[i], (sizeof(argv[i])/sizeof(*argv[i])));
 
-            for (int j = range.start; j <= range.end; ++j) {
-                cout << j << " " << (is_happy(j) ? "Happy!" : "Unhappy.") << endl;
+            if (range.start > range.end) {
+                cout << "Can't process range: " << range.start << "-" << range.end << endl;
+            } else {
+                for (uint j = range.start; j <= range.end; ++j) {
+                    cout << j << " " << (is_happy(j) ? "Happy!" : "Unhappy.") << endl;
+                }
             }
         }
     } else {
