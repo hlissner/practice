@@ -29,6 +29,7 @@ struct Range {
             if (arg[i] == '-') {
                 has_hyphen = true;
                 ptr = rhs;
+                len = i + 6;  // prevent overflow
             } else if (isdigit(arg[i])) {
                 *ptr = arg[i];
                 ++ptr;
@@ -92,5 +93,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-
