@@ -27,12 +27,13 @@ struct Range {
         char lhs[MAX_DIGITS] = {0};
         char rhs[MAX_DIGITS] = {0};
         char *ptr = lhs;
+        // prevent overflow
         if (len > MAX_DIGITS) len = MAX_DIGITS;
         for (uint i = 0; i < len; ++i) {
             if (arg[i] == '-') {
                 has_hyphen = true;
                 ptr = rhs;
-                len = i + MAX_DIGITS;  // prevent overflow
+                len = i + MAX_DIGITS;  // reset len for rhs
             } else if (isdigit(arg[i])) {
                 *ptr = arg[i];
                 ++ptr;
