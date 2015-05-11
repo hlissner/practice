@@ -1,5 +1,6 @@
 #include <iostream>
-#include <assert.h>
+#include <string.h>
+#include <stdlib.h>
 
 // How to use:
 //   clang++ -o solution solution.cpp
@@ -13,41 +14,16 @@
 
 using namespace std;
 
-typedef unsigned int uint;
-
 const int MAX_TRIES = 200;
-const int MAX_DIGITS = 11;
 
 struct Range {
-    uint start;
-    uint end;
+    long start;
+    long end;
 
-    Range(const char *arg, uint len) {
-        bool has_hyphen = false;
-        char lhs[MAX_DIGITS] = {0};
-        char rhs[MAX_DIGITS] = {0};
-        char *ptr = lhs;
-        // prevent overflow
-        if (len > MAX_DIGITS) len = MAX_DIGITS;
-        for (uint i = 0; i < len; ++i) {
-            if (arg[i] == '-') {
-                has_hyphen = true;
-                ptr = rhs;
-                len = i + MAX_DIGITS;  // reset len for rhs
-            } else if (isdigit(arg[i])) {
-                *ptr = arg[i];
-                ++ptr;
-            }
-        }
-
-        if (has_hyphen) {
-            assert(isdigit(*lhs) && isdigit(*rhs));
-            start = atoi(lhs);
-            end = atoi(rhs);
-        } else {
-            start = atoi(arg);
-            end = atoi(arg);
-        }
+    Range(const char *arg) {
+        char *end;
+        this->start = strtol(arg, &end, 10);
+        this->end = strstr(arg, "-") > 0 ? strtol(end+1, &end, 10) : this->start;
     }
 };
 
@@ -79,12 +55,12 @@ bool is_happy(int n) {
 int main(int argc, char *argv[]) {
     if (argc > 1) {
         for (int i = 1; i < argc; ++i) {
-            Range range(argv[i], (sizeof(argv[i])/sizeof(*argv[i])));
+            Range range(argv[i]);
 
             if (range.start > range.end) {
                 cout << "Can't process range: " << range.start << "-" << range.end << endl;
             } else {
-                for (uint j = range.start; j <= range.end; ++j) {
+                for (int j = range.start; j <= range.end; ++j) {
                     cout << j << " " << (is_happy(j) ? "Happy!" : "Unhappy.") << endl;
                 }
             }
