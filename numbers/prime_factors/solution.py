@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Checks to see if X is a prime number
+# Checks to see if each arg is a prime number
 #   Usage: python solution.py 10 11 12
 
 import sys
