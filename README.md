@@ -9,6 +9,5 @@ Positively propitious!
 
 * https://projecteuler.net/
 * https://github.com/karan/Projects
-* http://algs4.cs.princeton.edu/home/
 * ["Algorithms, 4th Edition"](http://algs4.cs.princeton.edu/home/)
 * [Building Machine Learning Systems with Python](https://www.packtpub.com/big-data-and-business-intelligence/building-machine-learning-systems-python)
