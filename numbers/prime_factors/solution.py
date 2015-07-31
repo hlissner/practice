@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# Checks to see if each arg is a prime number
-#   Usage: python solution.py 10 11 12
+# Lists all the prime factors of a number. Written for python 3. For python 2, switch
+# range out for xrange.
 
 import sys
 from math import sqrt
