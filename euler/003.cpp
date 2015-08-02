@@ -9,6 +9,8 @@
 #include <math.h>
 
 bool isprime(const long long n) {
+    if (n <= 3) return true;
+    if (!(n&1)) return false; // even numbers gtfo
     for (auto i = 3; i < (long long) sqrt(n)+1; i += 2) {
         if (n % i == 0)
             return false;
@@ -26,15 +28,24 @@ long long pfactor(long long n) {
     // reduces the number of steps, and starting from sqrt(n) altogether
     // significantly reduces the number of steps to find the greatest prime
     // factor.
-    for (auto i = max; i > 3; i -= 2) {
+    for (auto i = max; i >= 3; i -= 2) {
         if (n % i == 0 && isprime(i)) {
             return i;
         }
     }
+
+    // Even number fallback
+    if (!(n&1)) return 2;
     return -1;
 }
 
-int main() {
-    std::cout << pfactor(600851475143LL) << std::endl;
+int main(int argc, char *argv[]) {
+    if (argc > 1) {
+        long long n = strtol(argv[1], NULL, 10);
+        std::cout << pfactor(n) << std::endl;
+    } else {
+        std::cout << "Usage: " << argv[0] << " [N]" << std::endl;
+        return 1;
+    }
     return 0;
 }
