@@ -6,9 +6,14 @@
 ;
 ; Find the sum of all the multiples of 3 or 5 below 1000.
 
-(defun sum-multiples (i)
-  (if (zerop i) i
-    (+ (if (member 0 (list (mod i 3) (mod i 5))) i 0)
-       (sum-multiples (1- i)))))
+(defun sum-multiples (d ai max)
+  (let ((af (* (floor (/ (1- max) d)) d)))
+    (/ (* (/ af d) (+ ai af)) 2)))
 
-(write (sum-multiples 999))
+(let ((a 3)
+      (b 5)
+      (max 1000))
+  (write (+ (sum-multiples a a max)
+            (sum-multiples b b max)
+            (- (sum-multiples (* a b) (* a b) max)))))
+
