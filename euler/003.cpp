@@ -6,7 +6,9 @@
 // What is the largest prime factor of the number 600851475143 ?
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
+
+using namespace std;
 
 bool isprime(const long long n) {
     if (n <= 3) return true;
@@ -42,9 +44,9 @@ long long pfactor(long long n) {
 int main(int argc, char *argv[]) {
     if (argc > 1) {
         long long n = strtol(argv[1], NULL, 10);
-        std::cout << pfactor(n) << std::endl;
+        cout << pfactor(n) << endl;
     } else {
-        std::cout << "Usage: " << argv[0] << " [N]" << std::endl;
+        cout << "Usage: " << argv[0] << " [N]" << endl;
         return 1;
     }
     return 0;
