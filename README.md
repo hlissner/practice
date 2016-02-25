@@ -7,6 +7,7 @@ Positively propitious!
 
 # Sources
 
+* CodeEval ([my profile](https://www.codeeval.com/profile/hlissner/))
 * https://projecteuler.net/
 * https://github.com/karan/Projects
 * ["Algorithms, 4th Edition"](http://algs4.cs.princeton.edu/home/)
