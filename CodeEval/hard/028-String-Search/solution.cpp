@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
     ifstream infile(argv[1]);
     string line;
     while (getline(infile, line)) {
-        // Codeeval libs don't seem to include std::find. Maybe on purpose?
+        // I could use std::find, but it doesn't seem to work on CodeEval?
         string::iterator delim = line.begin();
         while (*delim != ',') ++delim;
 
