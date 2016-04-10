@@ -1,0 +1,8 @@
+build/
+solution
+CMakeLists.txt
+Makefile
+Rakefile
+
+*.o
+*.pyc
