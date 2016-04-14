@@ -22,7 +22,7 @@ import "fmt"
 func naive(limit int) int {
 	sumSq := 0
 	sqSum := 0
-	for i := 1; i <= 100; i++ {
+	for i := 1; i <= limit; i++ {
 		sumSq += i * i;
 		sqSum += i;
 	}
