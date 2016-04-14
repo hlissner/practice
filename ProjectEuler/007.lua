@@ -1,3 +1,4 @@
+#!/usr/bin/env lua
 -- 007: 10,001st prime - Lua
 -- https://projecteuler.net/problem=7
 --
@@ -6,25 +7,27 @@
 --
 -- What is the 10 001st prime number?
 
--- NOTE: Would be faster if I used a prime sieve
 function isPrime(n)
-  if n <= 3 then return true end
-  if ((n % 2) == 0) or (n % 5 == 0) then
+  if n == 1 then
     return false
-  end
-
-  for i=3, math.sqrt(n), 2 do
-    if n % i == 0 then
-      return false
+  elseif n <= 3 then
+    return true
+  elseif (n % 2) == 0 or (n % 3) == 0 then
+    return false
+  elseif n < 9 then
+    return true
+  else
+    for i=6, math.sqrt(n)+1, 6 do
+      if (n % (i-1)) == 0 or (n % (i+1)) == 0 then
+        return false
+      end
     end
-  end
 
-  return true
+    return true
+  end
 end
 
 function nthPrime(i)
-  i = i - 1
-
   j = 2
   n = 3
   while j < i do
