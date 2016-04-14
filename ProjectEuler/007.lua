@@ -7,6 +7,12 @@
 --
 -- What is the 10 001st prime number?
 
+-- NOTE: let n ∈ P, where P is the set of primes
+-- + 1 ∉ P
+-- + ∀p ∈ P, p >= 3: n is odd
+-- + ∀p ∈ P, p = 6k±1
+-- + n ∈ P if n ∤ 6k±1 where 3 <= k < sqrt(n)
+
 function isPrime(n)
   if n == 1 then
     return false
