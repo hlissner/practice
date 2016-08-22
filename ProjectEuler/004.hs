@@ -7,5 +7,5 @@
 -- Find the largest palindrome made from the product of two 3-digit numbers.
 
 largestPalindrome =
-  maximum [n | x <- [100..999], y <- [100..999],
+  maximum [n | x <- [999,998..100], y <- [999,998..x],
            let n = x*y, let str = show n, str == reverse str]
