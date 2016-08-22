@@ -8,7 +8,7 @@
 
 (defun sum-multiples (d ai max)
   (let ((af (* (floor (/ (1- max) d)) d)))
-    (/ (* (/ af d) (+ ai af)) 2)))
+    (* (/ af d) (+ ai af) .5)))
 
 (let ((a 3)
       (b 5)
