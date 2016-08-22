@@ -7,11 +7,12 @@
 --
 -- What is the 10 001st prime number?
 
--- NOTE: let n ∈ P, where P is the set of primes
+-- NOTE: let P be the set of all primes
 -- + 1 ∉ P
--- + ∀p ∈ P, p >= 3: n is odd
+-- + if p = 3k or p = 2k then p not a prime
+-- + ∀p ∈ P, p >= 3: p is odd
 -- + ∀p ∈ P, p = 6k±1
--- + n ∈ P if n ∤ 6k±1 where 3 <= k < sqrt(n)
+-- + n ∈ P if n mod 6k±1 == 0 where 3 <= k < sqrt(n)
 
 function isPrime(n)
   if n == 1 then
