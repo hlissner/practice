@@ -12,16 +12,16 @@
 
 function largest_product($mask, $ahead) {
     $max = 0;
-    $len = strlen($mask);
-    for ($i=0; $i < $len-$ahead; ++$i) {
-        $sum = intval($mask[$i]);
-        if ($sum == 0) continue;
+    $len = strlen($mask) - $ahead;
+    for ($i=0; $i < $len; ++$i) {
+        $sum = (int) $mask[$i];
+        if ($sum === 0) continue; // skip 0's
         for ($j=1; $j<$ahead; ++$j) {
-            $sum *= intval($mask[$i + $j]);
+            $n = (int) $mask[$i + $j];
+            if ($n === 0) break; // 0? Then move on
+            $sum *= $n;
         }
-        if ($sum > $max) {
-            $max = $sum;
-        }
+        $max = max($sum, $max);
     }
     return $max;
 }
