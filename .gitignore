@@ -1,8 +1,9 @@
 build/
+vendor/
 solution
 CMakeLists.txt
 Makefile
-Rakefile
 
 *.o
 *.pyc
+*.out
