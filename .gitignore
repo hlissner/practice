@@ -1,3 +1,4 @@
+.exercism/
 build/
 vendor/
 solution
