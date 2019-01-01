@@ -1,6 +1,6 @@
 [package]
+edition = "2018"
 name = "nth_prime"
-version = "1.0.0"
-authors = ["sacherjj <sacherjj@gmail.com>"]
+version = "2.1.0"
 
 [dependencies]
