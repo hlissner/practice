@@ -5,6 +5,8 @@ solution
 CMakeLists.txt
 Makefile
 
+.ccls-cache
+.cquery_cached_index
 *.o
 *.pyc
 *.out
