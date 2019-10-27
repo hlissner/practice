@@ -1,5 +1,4 @@
 # Practice Programming Projects
-
 Practical and prolific problems for programmers that I've patiently pondered and
 particularly puzzled over for personal pleasure and programming practice.
 
